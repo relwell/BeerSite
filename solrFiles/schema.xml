@@ -889,7 +889,7 @@
    <field name="description" type="text_general" indexed="true" stored="true"/>
    <field name="brewery_name" type="text_general" indexed="true" stored="true"/>
    <field name="brewery_id" type="string" indexed="true" stored="true" />
-   <field name="text" type="text_en" indexed="true" stored="true" />
+   <field name="text" type="text_en" indexed="true" stored="true" multiValued="true" />
    
  </fields>
 

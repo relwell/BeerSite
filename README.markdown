@@ -13,5 +13,6 @@ how to work with Solr.
 * Make sure you have your requirements installed (django and solrpy)
 * Copy the schema file in the solrFiles folder to apache-solr/example/solr/conf/schema.xml (it's optimal to do this from a fresh unzip)
 * Start or restart your solr instance
+* Call "python importBeer.py"
 * From the BeerSite folder, call "python manage.py runServer:8080".
-* Go to the homepage. You should be ready to search!
+* Go to localhost:8080. You should be ready to search!
