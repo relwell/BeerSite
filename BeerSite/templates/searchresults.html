@@ -81,6 +81,11 @@ text-decoration: underline;
 color: #3333ff;
 }
 
+.noresults {
+margin-bottom: 12px;
+text-align: center;
+}
+
 </style>
 <div class="searchheader">
 <h1>Beer Search</h1>
@@ -106,6 +111,18 @@ color: #3333ff;
   </div>
 </div>
 {% endfor %}
+{% else %}
+{% if searchresults.numFound == 0 %}
+<div class="noresults">
+<em>No results found</em>
+</div>
+{% endif %}
+<div class="intro">
+This is an example search engine site created for <i>Enterprise Search with Apache Solr</i> 
+from <a href="http://www.robertelwell.info">Robert Elwell</a>, produced for
+<a href="http://packtpub.com/">Packt Publishing</a>. Data is gratefully taken from the 
+<a href="http://openbeerdatabase.com/">Open Beer Database</a>.
+</div>
 {% endif %}
 </div>
 </body>

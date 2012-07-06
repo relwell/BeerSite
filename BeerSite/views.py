@@ -15,7 +15,7 @@ def search(request):
         query = form.cleaned_data['query']
 
     searchresults = s.query(query)
-        
+
     return render_to_response('searchresults.html', {'searchresults':searchresults,
                                                      'title': "Search results for",
                                                      'em' : query,
