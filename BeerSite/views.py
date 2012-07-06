@@ -14,7 +14,7 @@ def search(request):
     if form.is_valid():
         query = form.cleaned_data['query']
 
-    searchresults = s.query(query)
+    searchresults = s.query(query, facet='true', facet_field='brewery_name')
 
     return render_to_response('searchresults.html', {'searchresults':searchresults,
                                                      'title': "Search results for",

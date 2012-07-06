@@ -71,12 +71,14 @@ font-size: 12px;
 font-style: italic;
 }
 
-.result-description-morelike a {
+.result-description-morelike a,
+.facet-wrapper a {
 text-decoration: none;
 color: #666666;
 }
 
-.result-description-morelike a:hover {
+.result-description-morelike a:hover,
+.facet-wrapper a:hover {
 text-decoration: underline;
 color: #3333ff;
 }
@@ -84,6 +86,23 @@ color: #3333ff;
 .noresults {
 margin-bottom: 12px;
 text-align: center;
+}
+
+.facet-wrapper {
+margin: 0 auto;
+margin-bottom: 10px;
+width: 600px;
+}
+
+.brewery-facet {
+font-size: 12px;
+color: #333333;
+padding-right: 5px;
+border-right: 1px solid #333333;
+}
+
+.brewery-facet:last-child {
+border-right: none;
 }
 
 </style>
@@ -97,6 +116,14 @@ text-align: center;
 <div class="wrapper">
 {% if searchresults %}
 <h2>{{title}} <em>{{em}}</em></h2>
+{% if searchresults.facet_counts %}
+<div class="facet-wrapper">
+  <h3>Brewers matching your query:</h3>
+  {% for brewery, count in searchresults.facet_counts.facet_fields.brewery_name.items %}
+      <span class="brewery-facet"><a href="/brewer/{{brewery|urlencode}}">{{brewery}}</a> ({{count}})</span>
+  {% endfor %}
+</div>
+{% endif %}
 {% for result in searchresults %}
 <div class="result">
   <h3>{{result.name}}</h3>
