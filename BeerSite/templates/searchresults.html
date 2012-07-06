@@ -9,8 +9,9 @@ font-size: 16px;
 
 .wrapper {
 background-color: rgba(100, 200, 200, .8);
-border-radius: 20px;
+border-radius: 0 0 20px 20px;
 border: 2px solid #333333;
+border-top: 0;
 margin: 0 auto;
 padding: 10px;
 width: 900px;
@@ -47,9 +48,49 @@ padding: 10px 20px 20px 20px;
 border-top: 1px dotted #333333;
 }
 
+h1 {
+margin-bottom: 10px;
+}
+
+.searchheader {
+background-color: rgba(100, 200, 200, .8);
+border-radius: 20px 20px 0 0;
+border: 2px solid #333333;
+border-bottom: none;
+margin: 10px auto 0 auto;
+padding: 10px;
+width: 900px;
+}
+
+.searchheader form{
+text-align: center;
+}
+
+.result-description-morelike {
+font-size: 12px;
+font-style: italic;
+}
+
+.result-description-morelike a {
+text-decoration: none;
+color: #666666;
+}
+
+.result-description-morelike a:hover {
+text-decoration: underline;
+color: #3333ff;
+}
+
 </style>
+<div class="searchheader">
 <h1>Beer Search</h1>
+  <form action="/search/" method="GET">
+  {{form}}
+  <input type="submit" value="Search" />
+  </form>
+</div>
 <div class="wrapper">
+{% if searchresults %}
 <h2>{{title}} <em>{{em}}</em></h2>
 {% for result in searchresults %}
 <div class="result">
@@ -59,12 +100,13 @@ border-top: 1px dotted #333333;
   </div>
   <div class="result-description">
     {{result.description}}
-    <div class="result-description-morelike">
-      <a href="/morelikethis/{{result.id}}">(more like this)</a>
-    </div>
+    <span class="result-description-morelike">
+      (<a href="/morelikethis/{{result.id}}">More Beers Like This &hellip;</a>)
+    </span>
   </div>
 </div>
 {% endfor %}
+{% endif %}
 </div>
 </body>
 </html>
