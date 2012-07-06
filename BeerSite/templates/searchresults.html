@@ -32,6 +32,16 @@ color: #666666;
 margin-bottom: 10px;
 }
 
+.brewer a {
+color: #666666;
+text-decoration: none;
+}
+
+.brewer a:hover {
+color: #3333ff;
+text-decoration: underline;
+}
+
 .result {
 padding: 10px 20px 20px 20px;
 border-top: 1px dotted #333333;
@@ -40,15 +50,18 @@ border-top: 1px dotted #333333;
 </style>
 <h1>Beer Search</h1>
 <div class="wrapper">
-<h2>Search Results for <em>{{query}}</em></h2>
+<h2>{{title}} <em>{{em}}</em></h2>
 {% for result in searchresults %}
 <div class="result">
   <h3>{{result.name}}</h3>
   <div class="brewer">
-    {{result.brewery_name}}
+    <a href="/brewer/{{result.brewery_name|urlencode}}">{{result.brewery_name}}</a>
   </div>
   <div class="result-description">
     {{result.description}}
+    <div class="result-description-morelike">
+      <a href="/morelikethis/{{result.id}}">(more like this)</a>
+    </div>
   </div>
 </div>
 {% endfor %}
