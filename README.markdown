@@ -14,5 +14,5 @@ how to work with Solr.
 * Copy the schema file in the solrFiles folder to apache-solr/example/solr/conf/schema.xml (it's optimal to do this from a fresh unzip)
 * Start or restart your solr instance
 * Call "python importBeer.py"
-* From the BeerSite folder, call "python manage.py runServer:8080".
+* From the BeerSite folder, call "python manage.py runserver 8080".
 * Go to localhost:8080. You should be ready to search!
