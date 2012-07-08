@@ -27,5 +27,6 @@ distributed by [Packt Publishing](http://packtpub.com).
  * Deliver data to view in such a way that filtering between brewers for the same search term only requires clicking
 * *Add ABV*
  * Update the Schema File to Include ABV
+ * Update the ETL script to add ABV data
  * Display ABV in each search result
  * Add option to sort by relevance, weakest (ABV ascending) and strongest (ABV descending)
