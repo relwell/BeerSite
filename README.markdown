@@ -4,7 +4,7 @@
 This is an example Django site that allows us to better understand 
 how to work with Solr. It is indended to be an accompaniment to the 
 screencast collection *Apache Search with Enterprise Solr*, to be 
-distributed by [Packt Publishing](http://packtpub.com)
+distributed by [Packt Publishing](http://packtpub.com).
 
 ### Requirements ###
 * [Apache Solr](http://solr.apache.org)
