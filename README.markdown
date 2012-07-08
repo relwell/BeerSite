@@ -17,7 +17,12 @@ how to work with Solr.
 * From the BeerSite folder, call "python manage.py runserver 8080".
 * Go to localhost:8080. You should be ready to search!
 
-### Your Homework ###
-* Update the Schema File to Include ABV
-* Display ABV in each search result
-* Add option to sort by relevance, weakest (ABV ascending) and strongest (ABV descending)
+### Homeworks ###
+* *Introduce Filter Queries*
+ * Add an optional parameter to the search view function for brewer_name filter query
+ * Implement brewer name filter query when querying solr
+ * Deliver data to view in such a way that filtering between brewers for the same search term only requires clicking
+* *Add ABV*
+ * Update the Schema File to Include ABV
+ * Display ABV in each search result
+ * Add option to sort by relevance, weakest (ABV ascending) and strongest (ABV descending)
