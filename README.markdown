@@ -2,20 +2,23 @@
 ## An example use case for Apache Solr ##
 
 This is an example Django site that allows us to better understand 
-how to work with Solr.
+how to work with Solr. It is indended to be an accompaniment to the 
+screencast collection *Apache Search with Enterprise Solr*, to be 
+distributed by [Packt Publishing](http://packtpub.com)
 
 ### Requirements ###
+* [Apache Solr](http://solr.apache.org)
 * [solrpy](http://wiki.apache.org/solr/SolPython)
-* [pynt](https://github.com/h0ke/pynt) -- installation was messy so this is included, not as a submodule
-* django
+* [pynt](https://github.com/h0ke/pynt) -- *installation was messy so this is included, and does not need to be installed*
+* [Django](https://www.djangoproject.com/)
 
 ### How To Use ###
-* Make sure you have your requirements installed (django and solrpy)
+* Make sure you have your requirements installed
 * Copy the schema file in the solrFiles folder to apache-solr/example/solr/conf/schema.xml (it's optimal to do this from a fresh unzip)
-* Start or restart your solr instance
-* Call "python importBeer.py"
-* From the BeerSite folder, call "python manage.py runserver 8080".
-* Go to localhost:8080. You should be ready to search!
+* Start or restart your solr instance ("java -jar start.jar" from apache-solr/example)
+* Call "python importBeer.py" from the BeerSite project root directory
+* From the BeerSite project root directory, call "python manage.py runserver 8080"
+* Navigate to localhost:8080 in your web browser. You should be ready to search!
 
 ### Homeworks ###
 * *Introduce Filter Queries*
