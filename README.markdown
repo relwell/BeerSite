@@ -16,3 +16,8 @@ how to work with Solr.
 * Call "python importBeer.py"
 * From the BeerSite folder, call "python manage.py runserver 8080".
 * Go to localhost:8080. You should be ready to search!
+
+### Your Homework ###
+* Update the Schema File to Include ABV
+* Display ABV in each search result
+* Add option to sort by relevance, weakest (ABV ascending) and strongest (ABV descending)
