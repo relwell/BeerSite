@@ -16,19 +16,27 @@ def search(request):
         group = 'true' if form.cleaned_data['group'] == True else 'false'
 
     searchresults = s.query(query, \
+                                qf='description,brewery_name,text,name', \
                                 facet='true', \
                                 facet_field='brewery_name', \
+                                hl='true', \
+                                hl_fl='description', \
+                                hl_fragsize=51200, \
                                 group=group, \
-                                group_field='brewery_name',
+                                group_field='brewery_name', \
                                 group_limit=25)
 
     searchresults = searchresults if not form.cleaned_data['group'] else searchresults.grouped['brewery_name']['groups']
+    print searchresults.highlighting
+    if searchresults.highlighting:
+        for result in searchresults:
+            result['description'] = searchresults.highlighting.get(result['id'], {}).get('description', [result['description']])[0]
 
     return render_to_response('searchresults.html', {'searchresults':searchresults,
                                                      'title': "Search results for",
                                                      'em' : query,
                                                      'form' : form,
-                                                     'group': form.cleaned_data['group']
+                                                     'group': form.cleaned_data['group'],
                                                      }
                               )
 

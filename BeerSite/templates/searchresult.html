@@ -4,7 +4,9 @@
     <a href="/brewer/{{result.brewery_name|urlencode}}">{{result.brewery_name}}</a>
   </div>
   <div class="result-description">
+    {% autoescape off %}
     {{result.description}}
+    {% endautoescape %}
     <span class="result-description-morelike">
       (<a href="/morelikethis/{{result.id}}">More Beers Like This &hellip;</a>)
     </span>
