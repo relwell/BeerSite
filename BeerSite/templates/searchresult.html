@@ -1,0 +1,12 @@
+<div class="result">
+  <h3>{{result.name}}</h3>
+  <div class="brewer">
+    <a href="/brewer/{{result.brewery_name|urlencode}}">{{result.brewery_name}}</a>
+  </div>
+  <div class="result-description">
+    {{result.description}}
+    <span class="result-description-morelike">
+      (<a href="/morelikethis/{{result.id}}">More Beers Like This &hellip;</a>)
+    </span>
+  </div>
+</div>

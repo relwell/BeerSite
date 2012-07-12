@@ -1,0 +1,8 @@
+{% with result as groupedresult %}
+<div class="grouped-search-result">
+  <h4><a href="/brewer/{{result.groupValue|urlencode}}">{{result.groupValue}}</a></h4>
+  {% for result in groupedresult.doclist %}
+    {% include "searchresult.html" %}
+  {% endfor %}
+</div>
+{% endwith %}

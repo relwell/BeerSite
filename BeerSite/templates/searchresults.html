@@ -33,12 +33,14 @@ color: #666666;
 margin-bottom: 10px;
 }
 
-.brewer a {
+.brewer a,
+h4 a {
 color: #666666;
 text-decoration: none;
 }
 
-.brewer a:hover {
+.brewer a:hover,
+h4 a:hover {
 color: #3333ff;
 text-decoration: underline;
 }
@@ -105,6 +107,13 @@ border-right: 1px solid #333333;
 border-right: none;
 }
 
+h4 {
+  border-top: 2px solid #333333;
+  font-size: 16px;
+  font-weight: bold;
+  padding-top: 5px;
+}
+
 </style>
 <div class="searchheader">
 <h1>Beer Search</h1>
@@ -115,34 +124,27 @@ border-right: none;
 </div>
 <div class="wrapper">
 {% if searchresults %}
-<h2>{{title}} <em>{{em}}</em></h2>
-{% if searchresults.facet_counts %}
-<div class="facet-wrapper">
-  <h3>Brewers matching your query:</h3>
-  {% for brewery, count in searchresults.facet_counts.facet_fields.brewery_name.items %}
+  <h2>{{title}} <em>{{em}}</em></h2>
+  {% if searchresults.facet_counts %}
+  <div class="facet-wrapper">
+    <h3>Brewers matching your query:</h3>
+    {% for brewery, count in searchresults.facet_counts.facet_fields.brewery_name.items %}
       <span class="brewery-facet"><a href="/brewer/{{brewery|urlencode}}">{{brewery}}</a> ({{count}})</span>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% for result in searchresults %}
+    {% if group %}
+      {% include "grouped_search_result.html" %}
+    {% else %}
+      {% include "searchresult.html" %}
+    {% endif %}
   {% endfor %}
-</div>
-{% endif %}
-{% for result in searchresults %}
-<div class="result">
-  <h3>{{result.name}}</h3>
-  <div class="brewer">
-    <a href="/brewer/{{result.brewery_name|urlencode}}">{{result.brewery_name}}</a>
-  </div>
-  <div class="result-description">
-    {{result.description}}
-    <span class="result-description-morelike">
-      (<a href="/morelikethis/{{result.id}}">More Beers Like This &hellip;</a>)
-    </span>
-  </div>
-</div>
-{% endfor %}
 {% else %}
-{% if searchresults.numFound == 0 %}
-<div class="noresults">
-<em>No results found</em>
-</div>
+  {% if searchresults.numFound == 0 %}
+  <div class="noresults">
+    <em>No results found</em>
+  </div>
 {% endif %}
 <div class="intro">
 This is an example search engine site created for <i>Enterprise Search with Apache Solr</i> 

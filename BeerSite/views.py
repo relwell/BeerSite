@@ -13,13 +13,22 @@ def search(request):
     form = SearchForm(request.GET)
     if form.is_valid():
         query = form.cleaned_data['query']
+        group = 'true' if form.cleaned_data['group'] == True else 'false'
 
-    searchresults = s.query(query, facet='true', facet_field='brewery_name')
+    searchresults = s.query(query, \
+                                facet='true', \
+                                facet_field='brewery_name', \
+                                group=group, \
+                                group_field='brewery_name',
+                                group_limit=25)
+
+    searchresults = searchresults if not form.cleaned_data['group'] else searchresults.grouped['brewery_name']['groups']
 
     return render_to_response('searchresults.html', {'searchresults':searchresults,
                                                      'title': "Search results for",
                                                      'em' : query,
-                                                     'form' : form
+                                                     'form' : form,
+                                                     'group': form.cleaned_data['group']
                                                      }
                               )
 
@@ -48,3 +57,4 @@ def morelikethis(request, id):
 
 class SearchForm(forms.Form):
     query = forms.CharField()
+    group = forms.BooleanField(required=False)
