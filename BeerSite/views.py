@@ -24,19 +24,26 @@ def search(request):
                                 hl_fragsize=51200, \
                                 group=group, \
                                 group_field='brewery_name', \
-                                group_limit=25)
-
-    searchresults = searchresults if not form.cleaned_data['group'] else searchresults.grouped['brewery_name']['groups']
-    print searchresults.highlighting
+                                group_limit=25, \
+                                spellcheck='true', \
+                                spellcheck_build='true', \
+                                spellcheck_collate='true', \
+                                )
+    
     if searchresults.highlighting:
         for result in searchresults:
             result['description'] = searchresults.highlighting.get(result['id'], {}).get('description', [result['description']])[0]
+
+    spellcheck = searchresults.spellcheck['suggestions'].get('collation', False)
+
+    searchresults = searchresults if not form.cleaned_data['group'] else searchresults.grouped['brewery_name']['groups']
 
     return render_to_response('searchresults.html', {'searchresults':searchresults,
                                                      'title': "Search results for",
                                                      'em' : query,
                                                      'form' : form,
                                                      'group': form.cleaned_data['group'],
+                                                     'spellcheck': spellcheck
                                                      }
                               )
 

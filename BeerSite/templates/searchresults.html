@@ -123,6 +123,9 @@ h4 {
   </form>
 </div>
 <div class="wrapper">
+{% if spellcheck %}
+<span class="dym">Did you mean <a href="/search/?query={{spellcheck|urlencode}}">{{spellcheck}}</a>?</span>
+{% endif %}
 {% if searchresults %}
   <h2>{{title}} <em>{{em}}</em></h2>
   {% if searchresults.facet_counts %}
