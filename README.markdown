@@ -6,6 +6,12 @@ how to work with Solr. It is indended to be an accompaniment to the
 screencast collection *Apache Search with Enterprise Solr*, to be 
 distributed by [Packt Publishing](http://packtpub.com).
 
+An *advanced* branch includes commits outlining how to include:
+* spellcheck
+* grouped results
+* match highlighting
+* the MoreLikeThis request handler
+
 ### Requirements ###
 * [Apache Solr](http://solr.apache.org)
 * [solrpy](http://wiki.apache.org/solr/SolPython)
