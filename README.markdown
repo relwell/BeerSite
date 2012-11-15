@@ -3,7 +3,7 @@
 
 This is an example Django site that allows us to better understand 
 how to work with Solr. It is indended to be an accompaniment to the 
-screencast collection *Apache Search with Enterprise Solr*, to be 
+screencast collection *Getting Started with Apache Solr Search Server*, to be 
 distributed by [Packt Publishing](http://packtpub.com).
 
 An *advanced* branch includes commits outlining how to include:
