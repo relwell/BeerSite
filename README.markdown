@@ -1,4 +1,18 @@
+# WARNING: This project is no longer supported
+*The source data for this project is no longer available.*
+
+Since this is an example against a version of Solr that is 
+three major versions out of date, I will not be maintaining 
+this example.
+
+Please feel free to refer to the 
+[solrcloudpy](https://github.com/solrcloudpy/solrcloudpy)
+project -- specifically the test library -- for examples 
+of interactions with a modern solr deployment.
+
+
 # BeerSite #
+
 ## An example use case for Apache Solr ##
 
 This is an example Django site that allows us to better understand 
